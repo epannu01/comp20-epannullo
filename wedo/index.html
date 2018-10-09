@@ -16,11 +16,9 @@
 <script>
 	var video = document.getElementById("wedo");
 	var lyrics = document.getElementById("lyrics");
-	var timer = document.getElementById("timer");
 
 	video.addEventListener("timeupdate", function() {
 		console.log("Hello!");
-		timer.innerHTML = video.currentTime;
 		
 		if (video.currentTime < 3.5) {
 			lyrics.innerHTML ="<h3>Who controls the British crown?</h3>";
