@@ -1,4 +1,9 @@
 body {
 	text-align: center;
 	font: Helvetica;
+	color: #484848;
+}
+
+h1 {
+	font-style: italic;
 }
