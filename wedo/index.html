@@ -19,10 +19,16 @@
 	var timer = document.getElementById("timer");
 
 	video.addEventListener("timeupdate", function() {
+		console.log("Hello!");
 		timer.innerHTML = video.currentTime;
 		
-		if (video.currentTime > 3.5 && video.currentTime < 5.5) {
+		if (video.currentTime < 3.5) {
 			lyrics.innerHTML ="<h3>Who controls the British crown?</h3>";
+			console.log("One");
+		}
+		else if (video.currentTime > 3.5 && video.currentTime < 5.5) {
+			lyrics.innerHTML ="<h3>Who controls the British crown?</h3>";
+			console.log("Two");
 		}
 		else if (video.currentTime > 5.5 && video.currentTime < 8) {
 			lyrics.innerHTML = "<h3>Who keeps the metric system down?</h3>";
