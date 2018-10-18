@@ -1,35 +1,46 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
+    <title>Google Maps API version 3 Example</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi8OEnz9KhctL4HUBPhiqzb_4LFKpW3O0"></script>
+    <link rel="stylesheet" href="gmap_api_example_style.css" />
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+      function init()
+      {
+        // Faneuil Hall
+        var landmark = new google.maps.LatLng(42.3599611, -71.0567528);
+      
+        // Set up map
+        var myOptions = {
+          zoom: 13, // The larger the zoom number, the bigger the zoom
+          center: landmark,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        
+        // Create the map in the "map_canvas" <div>
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        // Create a marker        
+        var marker = new google.maps.Marker({
+          position: landmark,
+          title: "Faneuil Hall, Boston, MA"
+        });
+        marker.setMap(map);
+        // This is a global info window...
+        var infowindow = new google.maps.InfoWindow();
+        
+        // Open info window on click of marker
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(marker.title);
+          infowindow.open(map, marker);
         });
       }
     </script>
-    <script src="https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis"
-    async defer></script>
+  </head>
+  
+  <body onload="init()">
+    <div id="map_canvas"></div>
   </body>
 </html>
