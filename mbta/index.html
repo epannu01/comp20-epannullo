@@ -14,6 +14,119 @@
         var myLat = 42.352271;
         var myLng = -71.05524200000001;
         var current_position = new google.maps.LatLng(myLat, myLng);
+
+        // Create markers for all stops
+
+        // South Station
+        var southstation_Lat = 42.352271;
+        var southstation_Lng = -71.05524200000001;
+        var southstation_position = new google.maps.LatLng(southstation_Lat, southstation_Lng);
+
+        // Andrew  
+        var andrew_Lat = 42.330154;
+        var andrew_Lng = -71.057655;
+        var andrew_position = new google.maps.LatLng(andrew_Lat, andrew_Lng);
+
+        // Porter Square    
+        var porter_Lat = 42.3884;
+        var porter_Lng = -71.11914899999999;
+        var porter_position = new google.maps.LatLng(porter_Lat, porter_Lng);
+
+        // Harvard Square   
+        var harvard_Lat = 42.373362;
+        var harvard_Lng =  -71.118956;
+        var harvard_position = new google.maps.LatLng(harvard_Lat, harvard_Lng);
+
+        // JFK/UMass    
+        var jfk_Lat = 42.320685;
+        var jfk_Lng = -71.052391;
+        var jfk_position = new google.maps.LatLng(jkf_Lat, jfk_Lng);
+
+        // Savin Hill  
+        var savin_Lat = 42.31129;
+        var savin_Lng =  -71.053331;
+        var savin_position = new google.maps.LatLng(savin_Lat, savin_Lng);
+
+        // Park Street    
+        var park_Lat = 42.35639457;
+        var park_Lng = -71.0624242;
+        var park_position = new google.maps.LatLng(park_Lat, park_Lng);
+
+        // Broadway  
+        var broadway_Lat = 42.342622;
+        var broadway_Lng = -71.056967;
+        var broadway_position = new google.maps.LatLng(broadway_Lat, broadway_Lng);
+
+        // North Quincy    
+        var nquincy_Lat = 42.275275;
+        var nquincy_Lng =  -71.029583;
+        var nquincy_position = new google.maps.LatLng(nquincy_Lat, nquincy_Lng);
+
+        // Shawmut 
+        var shawmut_Lat = 42.29312583;
+        var shawmut_Lng = -71.06573796000001;
+        var shawmut_position = new google.maps.LatLng(shawmut_Lat, shawmut_Lng);
+
+        // Davis
+        var davis_Lat = 42.39674;
+        var davis_Lng =  -71.121815;
+        var davis_position = new google.maps.LatLng(davis_Lat, davis_Lng);
+
+        // Alewife  
+        var alewife_Lat = 42.395428;
+        var alewife_Lng = -71.142483;
+        var alewife_position = new google.maps.LatLng(alewife_Lat, alewife_Lng);
+
+        // Kendall/MIT
+        var kendall_Lat = 42.36249079;
+        var kendall_Lng = -71.08617653;
+        var kendall_position = new google.maps.LatLng(kendall_Lat, kendall_Lng);
+
+        // Charles/MGH 
+        var charles_Lat = 42.361166;
+        var charles_Lng = -71.070628;
+        var charles_position = new google.maps.LatLng(charles_Lat, charles_Lng);
+
+        // Downtown Crossing 
+        var downtownx_Lat = 42.355518;
+        var downtownx_Lng = -71.060225;
+        var downtownx_position = new google.maps.LatLng(downtownx_Lat, downtownx_Lng);
+
+        // Quincy Center  
+        var quincyC_Lat = 42.251809;
+        var quincyC_Lng = -71.005409;
+        var quincyC_position = new google.maps.LatLng(quincyC_Lat, quincyC_Lng);
+
+        // Quincy Adams
+        var quincyA_Lat = 42.233391;
+        var quincyA_Lng = -71.007153;
+        var quincyA_position = new google.maps.LatLng(quincyA_Lat, quincyA_Lng);
+
+        // Ashmont   
+        var ashmont_Lat = 42.284652;
+        var ahsmont_Lng = -71.06448899999999;
+        var ashmont_position = new google.maps.LatLng(ashmont_Lat, ashmont_Lng);
+
+        // Wollaston  
+        var wollaston_Lat =  42.2665139;
+        var wollaston_Lng = -71.0203369;
+        var wollaston_position = new google.maps.LatLng(wollaston_Lat, wollaston_Lng);
+
+        // Fields Corner
+        var fields_Lat = 42.300093;
+        var fields_Lng =  -71.061667;
+        var fields_position = new google.maps.LatLng(fields_Lat, fields_Lng);
+
+        // Central Square
+        var central_Lat = 42.365486;
+        var central_Lng = -71.103802;
+        var central_position = new google.maps.LatLng(central_Lat, central_Lng);
+
+        // Braintree  
+        var brain_Lat = 42.2078543;
+        var brain_Lng = -71.0011385;
+        var brain_position = new google.maps.LatLng(brain_Lat, brain_Lng);
+
         
         // Set up map
         var myOptions = {
@@ -40,19 +153,154 @@
         }
         }
 
+          // will need to create markers for all T-stops
          // Create a marker        
         var marker = new google.maps.Marker({
           position: current_position,
           title: "Here"
         });
 
+        // South Station
+        var marker = new google.maps.Marker({
+          position: southstation_position,
+          title: "South Station"
+        });
+
+         // Andrew
+        var marker = new google.maps.Marker({
+          position: andrew_position,
+          title: "Andrew"
+        });
+
+         // Porter Square
+        var marker = new google.maps.Marker({
+          position: porter_position,
+          title: "Porter Square"
+        });
+
+         // Harvard Square
+        var marker = new google.maps.Marker({
+          position: harvard_position,
+          title: "Harvard Square"
+        });
+
+        //  JFK / UMASS
+        var marker = new google.maps.Marker({
+          position: jfk_position,
+          title: "JFK / UMASS"
+        });
+        
+        //  Savin Hill
+        var marker = new google.maps.Marker({
+          position: savin_position,
+          title: "Savin Hill"
+        });
+
+        //  Park Street
+        var marker = new google.maps.Marker({
+          position: park_position,
+          title: "Park Street"
+        });
+
+        //  Broadway
+        var marker = new google.maps.Marker({
+          position: broadway_position,
+          title: "Broadway"
+        });
+
+        //  North Quincy
+        var marker = new google.maps.Marker({
+          position: nquincy_position,
+          title: "North Quincy"
+        });
+
+        //  Shawmut
+        var marker = new google.maps.Marker({
+          position: shawmut_position,
+          title: "Shawmut"
+        });
+
+        //  Davis
+        var marker = new google.maps.Marker({
+          position: davis_position,
+          title: "Davis"
+        });
+
+        //  Alewife
+        var marker = new google.maps.Marker({
+          position: alewife_position,
+          title: "Alewife"
+        });
+
+        //  Kendall MIT
+        var marker = new google.maps.Marker({
+          position: kendall_position,
+          title: "Kendall MIT"
+        });
+
+        //  Charles / MGH
+        var marker = new google.maps.Marker({
+          position: charles_position,
+          title: "Charles / MGH"
+        });
+
+        //  Downtown Crossing
+        var marker = new google.maps.Marker({
+          position: downtownx_position,
+          title: "Downtown Crossing"
+        });
+
+        //  Quincy Center
+        var marker = new google.maps.Marker({
+          position: quincyC_position,
+          title: "Quincy Center"
+        });
+
+        //  Quincy Adams
+        var marker = new google.maps.Marker({
+          position: quincyA_position,
+          title: "Quincy Adams"
+        });
+
+        //  Ashmont
+        var marker = new google.maps.Marker({
+          position: ashmont_position,
+          title: "Ashmont"
+        });
+
+        //  Wollaston
+        var marker = new google.maps.Marker({
+          position: wollaston_position,
+          title: "Wollaston"
+        });
+
+        //  Fields Corner
+        var marker = new google.maps.Marker({
+          position: fields_position,
+          title: "Fields Corner"
+        });
+
+        //  Central Square
+        var marker = new google.maps.Marker({
+          position: central_position,
+          title: "Central Square"
+        });
+
+        //  Braintree
+        var marker = new google.maps.Marker({
+          position: brain_position,
+          title: "Braintree"
+        });
+
 
         marker.setMap(map);
         // This is a global info window...
         var infowindow = new google.maps.InfoWindow();
+
+        // will also need to put different info for each stop in a window
         
         // Open info window on click of marker
-        google.maps.event.addListener(marker, 'click', function() {
+          google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(marker.title);
           infowindow.open(map, marker);
         });
