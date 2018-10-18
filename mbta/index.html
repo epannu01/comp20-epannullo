@@ -3,30 +3,48 @@
 <html>
 
   <head>
-    <title>Google Maps API version 3 Example</title>
+    <title>Assignment 2</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi8OEnz9KhctL4HUBPhiqzb_4LFKpW3O0"></script>
     <link rel="stylesheet" href="style.css" />
     <script>
       function init()
       {
-        // Faneuil Hall
-        var landmark = new google.maps.LatLng(42.3599611, -71.0567528);
-      
+        // Start at South Station
+        var myLat = 42.352271;
+        var myLng = -71.05524200000001;
+        var me = new google.maps.LatLng(myLat, myLng);
+        
         // Set up map
         var myOptions = {
-          zoom: 13, // The larger the zoom number, the bigger the zoom
+          zoom: 15, // The larger the zoom number, the bigger the zoom
           center: landmark,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         
         // Create the map in the "map_canvas" <div>
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-        // Create a marker        
+       
+        function getMyLocation() {
+        if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+          navigator.geolocation.getCurrentPosition(function(position) {
+            myLat = position.coords.latitude;
+            myLng = position.coords.longitude;
+            renderMap();
+          });
+        }
+        else {
+          alert("Geolocation is not supported by your web browser.  What a shame!");
+        }
+        }
+
+         // Create a marker        
         var marker = new google.maps.Marker({
           position: landmark,
-          title: "Faneuil Hall, Boston, MA"
+          title: "Here"
         });
+
+
         marker.setMap(map);
         // This is a global info window...
         var infowindow = new google.maps.InfoWindow();
