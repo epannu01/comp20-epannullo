@@ -13,12 +13,12 @@
         // Start at South Station
         var myLat = 42.352271;
         var myLng = -71.05524200000001;
-        var start_position = new google.maps.LatLng(myLat, myLng);
+        var current_position = new google.maps.LatLng(myLat, myLng);
         
         // Set up map
         var myOptions = {
           zoom: 15, // The larger the zoom number, the bigger the zoom
-          center: start_position,
+          center: current_position,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         
@@ -30,6 +30,7 @@
           navigator.geolocation.getCurrentPosition(function(position) {
             myLat = position.coords.latitude;
             myLng = position.coords.longitude;
+            current_position = google.maps.LatLng(myLat,myLng);
             renderMap();
           });
         }
@@ -40,7 +41,7 @@
 
          // Create a marker        
         var marker = new google.maps.Marker({
-          position: landmark,
+          position: current_position,
           title: "Here"
         });
 
