@@ -57,9 +57,9 @@ var map;
 	              //getSchedule(i, markers[i].stop_id);
 	          });
 	          markers[i].setMap(map);
-	        }
-	        getMyLocation();
-      	}
+	          getMyLocation();
+	    }
+	        
 
       	function getMyLocation() {
 				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
