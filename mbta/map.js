@@ -36,9 +36,9 @@ var map;
         // markers and calls functiton to add the schedule information
         function init()
         {
-        	
+
 	        markers = [];
-	        for (i = 0; stops.length;i++) {
+	        for (i = 0; i < stops.length;i++) {
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].title
