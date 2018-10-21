@@ -2,10 +2,19 @@ var map;
 
 		var infowindow = new google.maps.InfoWindow();
 
+		var myOptions = {
+			zoom: 13, // The larger the zoom number, the bigger the zoom
+			center: me,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+
+		var map;
+	
         // Start at South Station
         var startLat = 42.352271;
         var startLng = -71.05524200000001;
         var current_position = new google.maps.LatLng(startLat, startLng);
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
         var stops = [
         	{position : new google.maps.LatLng(42.352271, -71.05524200000001), stop_id : "place-sstat", name : "South Station"},
@@ -46,8 +55,13 @@ var map;
 	          google.maps.event.addListener(markers[i], 'click', function() {
 	              getSchedule(i, markers[i].stop_id);
 	          });
+	          markers[i].setMap(map);
 	        }
       	}
+
+      	
+
+
 
       	// use API and stop id of the T-station to get the schedule information
 	    function getSchedule(stop_index, stop_id) {
