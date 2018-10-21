@@ -14,11 +14,11 @@ var map;
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        
 
         var stops = [
         	{position : new google.maps.LatLng(42.352271, -71.05524200000001), stop_id : "place-sstat", name : "South Station"},
-        	{position : new google.maps.LatLng(42.330154, -71.057655), stop_id : "place-andrw", name : "Andrew"},
+        	/*{position : new google.maps.LatLng(42.330154, -71.057655), stop_id : "place-andrw", name : "Andrew"},
         	{position : new google.maps.LatLng(42.3884, -71.11914899999999), stop_id : "place-portr", name : "Porter Square"},
         	{position : new google.maps.LatLng(42.373362, -71.118956), stop_id : "place-harsq", name : "Harvard Square"},
         	{position : new google.maps.LatLng(42.320685, -71.052391), stop_id : "place-jfk", name : "JFK/UMASS"},
@@ -38,28 +38,60 @@ var map;
         	{position : new google.maps.LatLng(42.2665139, -71.0203369), stop_id : "place-wlsta", name : "Wollaston"},
         	{position : new google.maps.LatLng(42.300093, -71.061667), stop_id : "place-fldcr", name : "Fields Corner"},
         	{positoin : new google.maps.LatLng(42.365486, -71.103802), stop_id : "place-cntsq", name : "Central Square"},
-        	{position : new google.maps.LatLng(42.2078543, -71.0011385), stop_id : "place-brntn", name : "Braintree"}
+        	{position : new google.maps.LatLng(42.2078543, -71.0011385), stop_id : "place-brntn", name : "Braintree"}*/
         ]
 
         // init function will make array of markers for each T-stop, sets the position of those
         // markers and calls functiton to add the schedule information
         function init()
         {
-
+        	map = new google.maps.Map(document.getElementById("map"), myOptions)
 	        markers = [];
-	        for (i = 0; i < stops.length;i++) {
+	        //for (i = 0; i < stops.length;i++) {
+	        for (i = 0; i < 1; i++)
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].name
 	          });
 	          google.maps.event.addListener(markers[i], 'click', function() {
-	              getSchedule(i, markers[i].stop_id);
+	              //getSchedule(i, markers[i].stop_id);
 	          });
 	          markers[i].setMap(map);
 	        }
+	        getMyLocation();
       	}
 
-      	
+      	function getMyLocation() {
+				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+					navigator.geolocation.getCurrentPosition(function(position) {
+						myLat = position.coords.latitude;
+						myLng = position.coords.longitude;
+						renderMap();
+					});
+				}
+				else {
+					alert("Geolocation is not supported by your web browser.  What a shame!");
+				}
+			}
+
+      	function renderMap() {
+				me = new google.maps.LatLng(myLat, myLng);
+				// Update map and go there...
+				map.panTo(me);
+				
+				// Create a marker
+				marker = new google.maps.Marker({
+					position: me,
+					title: "Here I Am!"
+				});
+				marker.setMap(map);
+					
+				// Open info window on click of marker
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(marker.title);
+					infowindow.open(map, marker);
+				});
+			}
 
 
 
