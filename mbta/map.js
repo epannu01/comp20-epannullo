@@ -2,18 +2,18 @@ var map;
 
 		var infowindow = new google.maps.InfoWindow();
 
-		var myOptions = {
-			zoom: 13, // The larger the zoom number, the bigger the zoom
-			center: me,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-
 		var map;
 	
         // Start at South Station
         var startLat = 42.352271;
         var startLng = -71.05524200000001;
         var current_position = new google.maps.LatLng(startLat, startLng);
+
+        var myOptions = {
+			zoom: 13, // The larger the zoom number, the bigger the zoom
+			center: current_position,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
         var stops = [
@@ -50,7 +50,7 @@ var map;
 	        for (i = 0; i < stops.length;i++) {
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
-	            title: stops[i].title
+	            title: stops[i].name
 	          });
 	          google.maps.event.addListener(markers[i], 'click', function() {
 	              getSchedule(i, markers[i].stop_id);
