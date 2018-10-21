@@ -37,7 +37,7 @@ var map;
         function init()
         {
 	        markers = [];
-	        for (i = 0; length(stops);i++) {
+	        for (i = 0; stops.length;i++) {
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].title
