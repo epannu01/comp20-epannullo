@@ -38,7 +38,7 @@ var map;
         	{position : new google.maps.LatLng(42.300093, -71.061667), stop_id : "place-fldcr", name : "Fields Corner"},
         	{positoin : new google.maps.LatLng(42.365486, -71.103802), stop_id : "place-cntsq", name : "Central Square"},
         	{position : new google.maps.LatLng(42.2078543, -71.0011385), stop_id : "place-brntn", name : "Braintree"}
-        ]
+        ];
 
         // init function will make array of markers for each T-stop, sets the position of those
         // markers and calls functiton to add the schedule information
@@ -50,12 +50,13 @@ var map;
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].name
-	        });
-	        google.maps.event.addListener(markers[i], 'click', function() {
-	              getSchedule(i, markers[i].stop_id);
-	        });
-	        markers[i].setMap(map);
-	        getMyLocation();
+	          });
+	          google.maps.event.addListener(markers[i], 'click', function() {
+	             getSchedule(i, markers[i].stop_id);
+	          });
+	          markers[i].setMap(map);
+	          getMyLocation();
+	    	}
 	    }
 	        
 
@@ -70,7 +71,7 @@ var map;
 				else {
 					alert("Geolocation is not supported by your web browser.  What a shame!");
 				}
-			}
+		}
 
       	function renderMap() {
 				me = new google.maps.LatLng(myLat, myLng);
