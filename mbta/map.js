@@ -46,17 +46,16 @@ var map;
         {
         	map = new google.maps.Map(document.getElementById("map"), myOptions)
 	        markers = [];
-	        //for (i = 0; i < stops.length;i++) {
-	        for (i = 0; i < 1; i++)
+	        for (i = 0; i < stops.length;i++) {
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].name
-	          });
-	          google.maps.event.addListener(markers[i], 'click', function() {
-	              //getSchedule(i, markers[i].stop_id);
-	          });
-	          markers[i].setMap(map);
-	          getMyLocation();
+	        });
+	        google.maps.event.addListener(markers[i], 'click', function() {
+	              getSchedule(i, markers[i].stop_id);
+	        });
+	        markers[i].setMap(map);
+	        getMyLocation();
 	    }
 	        
 
