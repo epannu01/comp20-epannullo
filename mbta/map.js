@@ -99,8 +99,6 @@ var map_canvas;
 				});
 			}
 
-
-
       	// use API and stop id of the T-station to get the schedule information
 	    function getSchedule(stop_index, stop_id) {
 	    	console.log("inside get sched");
@@ -115,9 +113,9 @@ var map_canvas;
 				if (request.readyState == 4 && request.status == 200) {
 					console.log("Got the data back!");
 					data = request.responseText;
-					console.log(data);
-					//parse JSON to get content
-					infowindow.setContent(data);
+					var info = JSON.parse(data);
+					arrival_time = info.data.attributes.arrival_time;
+					infowindow.setContent(arrival_time);
 	                infowindow.open(map, markers[stop_index].marker);
 
 				}
