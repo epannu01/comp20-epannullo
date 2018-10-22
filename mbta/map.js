@@ -44,9 +44,11 @@ var map;
         // markers and calls functiton to add the schedule information
         function init()
         {
+        	console.log("inside init");
         	map = new google.maps.Map(document.getElementById("map"), myOptions)
 	        markers = [];
 	        for (i = 0; i < stops.length;i++) {
+	        	console.log("inside for loop to make markers");
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].name
@@ -61,6 +63,7 @@ var map;
 	        
 
       	function getMyLocation() {
+      		console.log("inside get location");
 				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
 					navigator.geolocation.getCurrentPosition(function(position) {
 						myLat = position.coords.latitude;
@@ -74,6 +77,7 @@ var map;
 		}
 
       	function renderMap() {
+      		console.log("trying to render");
 				me = new google.maps.LatLng(myLat, myLng);
 				// Update map and go there...
 				map.panTo(me);
@@ -96,6 +100,7 @@ var map;
 
       	// use API and stop id of the T-station to get the schedule information
 	    function getSchedule(stop_index, stop_id) {
+	    	console.log("inside get sched");
 	    	var request = new XMLHttpRequest();
 			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
 		
