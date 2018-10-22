@@ -45,7 +45,8 @@ var map;
         function init()
         {
         	console.log("inside init");
-        	map = new google.maps.Map(document.getElementById("map"), myOptions)
+        	map = new google.maps.Map(document.getElementById("map"), myOptions);
+        	getMyLocation();
 	        markers = [];
 	        for (i = 0; i < stops.length;i++) {
 	        	console.log("inside for loop to make markers");
@@ -57,8 +58,8 @@ var map;
 	             getSchedule(i, markers[i].stop_id);
 	          });
 	          markers[i].setMap(map);
-	          getMyLocation();
 	    	}
+
 	    }
 	        
 
