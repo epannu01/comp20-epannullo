@@ -43,7 +43,7 @@ var map_canvas;
 
         // init function will make array of markers for each T-stop, sets the position of those
         // markers and calls functiton to add the schedule information
-        function init()
+        function init(stops)
         {
         	console.log("inside init");
         	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
