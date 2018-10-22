@@ -114,7 +114,7 @@ var map_canvas;
 					console.log("Got the data back!");
 					data = request.responseText;
 					var info = JSON.parse(data);
-					for (int j = 0; j < info.length; j++) {
+					for (j = 0; j < info.length; j++) {
 						content = content + "\n" + info.data[j].attributes.arrival_time;
 					}
 					
