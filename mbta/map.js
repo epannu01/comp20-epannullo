@@ -53,7 +53,7 @@ var map_canvas;
 	          markers[i] = new google.maps.Marker({
 	            position: stops[i].position,
 	            title: stops[i].name,
-	            stop_id: stop[i].stop_id
+	            stop_id: stops[i].stop_id
 	          });
 	          google.maps.event.addListener(markers[i], 'click', function() {
 	             getSchedule(i, markers[i].stop_id);
