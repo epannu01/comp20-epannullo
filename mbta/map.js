@@ -107,7 +107,7 @@ var map_canvas;
 	    	console.log(stop_index);
 	    	console.log(stop_id);
 	    	var request = new XMLHttpRequest();
-			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
+			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=[" + stop_id + "]", true);
 		
 			request.onreadystatechange = function() {
 				console.log("inside function to parse");
