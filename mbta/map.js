@@ -54,7 +54,7 @@ var map_canvas;
 	          google.maps.event.addListener(markers[i], 'click', function() {
 	             getSchedule(i, markers[i].stop_id);
 	          });
-	          markers[i].setMap(map);
+	          markers[i].marker.setMap(map);
 	    	}
 
 	    }
