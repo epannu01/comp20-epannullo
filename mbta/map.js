@@ -104,6 +104,8 @@ var map_canvas;
       	// use API and stop id of the T-station to get the schedule information
 	    function getSchedule(stop_index, stop_id) {
 	    	console.log("inside get sched");
+	    	console.log(stop_index);
+	    	console.log(stop_id);
 	    	var request = new XMLHttpRequest();
 			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
 		
