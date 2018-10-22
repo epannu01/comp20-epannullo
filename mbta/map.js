@@ -56,6 +56,10 @@ var map_canvas;
 	          current_title = markers[i].marker.title;
 	          current_marker = markers[i].marker;
 	          google.maps.event.addListener(markers[i].marker, 'click', function(i, current_stop_id, current_marker, current_title) {
+	          	console.log("inside event listener");
+	          	console.log(current_stop_id);
+	          	console.log(current_marker);
+	          	console.log(current_title);
 	          	infowindow.setContent(current_title);
 				infowindow.open(map, current_marker);
 	            //getSchedule(i, current_stop_id);
