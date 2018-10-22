@@ -107,29 +107,27 @@ var map_canvas;
 	    	console.log(stop_index);
 	    	console.log(stop_id);
 	    	var request = new XMLHttpRequest();
-	    	if (request) {
-	    		console.log("inside if statement");
-				request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
-				console.log("after opening request");
-				request.onreadystatechange = function() {
-					console.log("inside function to parse");
-					if (request.readyState == 4 && request.status == 200) {
-						console.log("Got the data back!");
-						data = request.responseText;
-						console.log(data);
-						//parse JSON to get content
-						infowindow.setContent(content);
-		                infowindow.open(map, markers[stop_index]);
+			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
+			console.log("after opening request");
+			console.log(request.readyState);
+			request.onreadystatechange = function() {
+				console.log("inside function to parse");
+				if (request.readyState == 4 && request.status == 200) {
+					console.log("Got the data back!");
+					data = request.responseText;
+					console.log(data);
+					//parse JSON to get content
+					infowindow.setContent(content);
+	                infowindow.open(map, markers[stop_index]);
 
-					}
-					else if (request.readyState == 4 && request.status != 200) {
-						document.getElementById("location").innerHTML = "<p>Whoops, something went terribly wrongo</p>";
-					}
-					else {
-						console.log("In progress...");
-					}
-
-					request.send(null);
 				}
+				else if (request.readyState == 4 && request.status != 200) {
+					document.getElementById("location").innerHTML = "<p>Whoops, something went terribly wrongo</p>";
+				}
+				else {
+					console.log("In progress...");
+				}
+
+				request.send(null);
 			}
       }
