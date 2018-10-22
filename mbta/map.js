@@ -14,6 +14,7 @@ var map_canvas;
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
+		//polyline
 
         var stops = [
         	{position : new google.maps.LatLng(42.352271, -71.05524200000001), stop_id : "place-sstat", stop_name : "South Station"},
@@ -36,7 +37,7 @@ var map_canvas;
         	{position : new google.maps.LatLng(42.284652,  -71.06448899999999), stop_id : "place-asmnl", stop_name : "Ashmont"},
         	{position : new google.maps.LatLng(42.2665139, -71.0203369), stop_id : "place-wlsta", stop_name : "Wollaston"},
         	{position : new google.maps.LatLng(42.300093, -71.061667), stop_id : "place-fldcr", stop_name : "Fields Corner"},
-        	{positoin : new google.maps.LatLng(42.365486, -71.103802), stop_id : "place-cntsq", stop_name : "Central Square"},
+        	{position : new google.maps.LatLng(42.365486, -71.103802), stop_id : "place-cntsq", stop_name : "Central Square"},
         	{position : new google.maps.LatLng(42.2078543, -71.0011385), stop_id : "place-brntn", stop_name : "Braintree"}
         ];
 
@@ -50,7 +51,8 @@ var map_canvas;
 	        markers = [];
 	        for (i = 0; i < stops.length;i++) {
 	        	console.log("inside for loop to make markers");
-	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}), stop_id : stops[i].stop_id};
+	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}), 
+	          				stop_id : stops[i].stop_id};
 	          google.maps.event.addListener(markers[i].marker, 'click', function() {
 	             getSchedule(i, markers[i].stop_id);
 	          });
@@ -58,7 +60,6 @@ var map_canvas;
 	    	}
 
 	    }
-	        
 
       	function getMyLocation() {
       		console.log("inside get location");
