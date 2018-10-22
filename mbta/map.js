@@ -117,8 +117,8 @@ var map_canvas;
 					data = request.responseText;
 					console.log(data);
 					//parse JSON to get content
-					infowindow.setContent(content);
-	                infowindow.open(map, markers[stop_index]);
+					infowindow.setContent(data);
+	                infowindow.open(map, markers[stop_index].marker);
 
 				}
 				else if (request.readyState == 4 && request.status != 200) {
