@@ -127,7 +127,6 @@ var map_canvas;
 				else {
 					console.log("In progress...");
 				}
-
-				request.send(null);
 			}
+			request.send(null);
       }
