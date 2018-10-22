@@ -61,7 +61,7 @@ var map_canvas;
 	          	return function() {
 		          	infowindow.setContent(current_title);
 					infowindow.open(map, current_marker);
-		            //getSchedule(i, current_stop_id);
+		            getSchedule(i, current_stop_id);
 	          	}
 	          })(i, current_stop_id, current_marker, current_title));
 	          markers[i].marker.setMap(map);
@@ -108,6 +108,7 @@ var map_canvas;
 			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
 		
 			request.onreadystatechange = function() {
+				console.log("inside function to parse");
 				if (request.readyState == 4 && request.status == 200) {
 					console.log("Got the data back!");
 					data = request.responseText;
