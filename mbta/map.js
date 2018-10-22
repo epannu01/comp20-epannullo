@@ -54,9 +54,9 @@ var map_canvas;
 	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}), 
 	          				stop_id : stops[i].stop_id};
 	          current_stop_id = stops[i].stop_id;
-	          current_marker = markers[i];
+	          current_marker = markers[i].marker;
 	          google.maps.event.addListener(markers[i].marker, 'click', function(i, current_stop_id, current_marker) {
-	          	infowindow.setContent(current_marker.marker.stop_name);
+	          	infowindow.setContent(current_marker.title);
 				infowindow.open(map, current_marker);
 	            //getSchedule(i, current_stop_id);
 	          });
