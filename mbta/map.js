@@ -16,14 +16,7 @@ var map_canvas;
 		};
 		//polyline
 
-        
-
-        // init function will make array of markers for each T-stop, sets the position of those
-        // markers and calls functiton to add the schedule information
-        function init()
-        {
-
-        	var stops = [
+		var stops = [
         	{position : new google.maps.LatLng(42.352271, -71.05524200000001), stop_id : "place-sstat", stop_name : "South Station"},
         	{position : new google.maps.LatLng(42.330154, -71.057655), stop_id : "place-andrw", stop_name : "Andrew"},
         	{position : new google.maps.LatLng(42.3884, -71.11914899999999), stop_id : "place-portr", stop_name : "Porter Square"},
@@ -47,6 +40,13 @@ var map_canvas;
         	{position : new google.maps.LatLng(42.365486, -71.103802), stop_id : "place-cntsq", stop_name : "Central Square"},
         	{position : new google.maps.LatLng(42.2078543, -71.0011385), stop_id : "place-brntn", stop_name : "Braintree"}
         ];
+        
+
+        // init function will make array of markers for each T-stop, sets the position of those
+        // markers and calls functiton to add the schedule information
+        function init()
+        {
+
         	console.log("inside init");
         	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         	getMyLocation();
@@ -57,18 +57,11 @@ var map_canvas;
 	          current_stop_id = stops[i].stop_id;
 	          current_title = markers[i].marker.title;
 	          current_marker = markers[i].marker;
-	          console.log(current_stop_id);
-	          	console.log(current_marker);
-	          	console.log(current_title);
 	          google.maps.event.addListener(markers[i].marker, 'click', (function(i, current_stop_id, current_marker, current_title) {
 	          	return function() {
-	          	console.log("inside event listener");
-	          	console.log(current_stop_id);
-	          	console.log(current_marker);
-	          	console.log(current_title);
-	          	infowindow.setContent(current_title);
-				infowindow.open(map, current_marker);
-	            //getSchedule(i, current_stop_id);
+		          	infowindow.setContent(current_title);
+					infowindow.open(map, current_marker);
+		            //getSchedule(i, current_stop_id);
 	          	}
 	          })(i, current_stop_id, current_marker, current_title));
 	          markers[i].marker.setMap(map);
@@ -77,7 +70,6 @@ var map_canvas;
 	    }
 
       	function getMyLocation() {
-      		console.log("inside get location");
 				if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
 					navigator.geolocation.getCurrentPosition(function(position) {
 						myLat = position.coords.latitude;
@@ -91,7 +83,6 @@ var map_canvas;
 		}
 
       	function renderMap() {
-      		console.log("trying to render");
 				me = new google.maps.LatLng(myLat, myLng);
 
 				map.panTo(me);
