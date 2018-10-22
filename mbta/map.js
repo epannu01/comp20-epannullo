@@ -60,7 +60,8 @@ var map_canvas;
 	          console.log(current_stop_id);
 	          	console.log(current_marker);
 	          	console.log(current_title);
-	          google.maps.event.addListener(markers[i].marker, 'click', function(i, current_stop_id, current_marker, current_title) {
+	          google.maps.event.addListener(markers[i].marker, 'click', (function(i, current_stop_id, current_marker, current_title) {
+	          	return function() {
 	          	console.log("inside event listener");
 	          	console.log(current_stop_id);
 	          	console.log(current_marker);
@@ -68,7 +69,8 @@ var map_canvas;
 	          	infowindow.setContent(current_title);
 				infowindow.open(map, current_marker);
 	            //getSchedule(i, current_stop_id);
-	          });
+	          	}
+	          })(i, current_stop_id, current_marker, current_title));
 	          markers[i].marker.setMap(map);
 	    	}
 
