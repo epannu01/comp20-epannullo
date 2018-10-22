@@ -53,8 +53,9 @@ var map_canvas;
 	        	console.log("inside for loop to make markers");
 	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}), 
 	          				stop_id : stops[i].stop_id};
-	          google.maps.event.addListener(markers[i].marker, 'click', function(markers) {
-	             getSchedule(i, markers[i].stop_id);
+	          current_stop_id = stops[i].stop_id;
+	          google.maps.event.addListener(markers[i].marker, 'click', function(i, current_stop_id) {
+	             getSchedule(i, current_stop_id);
 	          });
 	          markers[i].marker.setMap(map);
 	    	}
