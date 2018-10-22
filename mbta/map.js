@@ -114,8 +114,11 @@ var map_canvas;
 					console.log("Got the data back!");
 					data = request.responseText;
 					var info = JSON.parse(data);
-					arrival_time = info.data[0].attributes.arrival_time;
-					infowindow.setContent(arrival_time);
+					for (int j = 0; j < info.length; j++) {
+						content = content + "\n" + info.data[j].attributes.arrival_time;
+					}
+					
+					infowindow.setContent(content);
 	                infowindow.open(map, markers[stop_index].marker);
 
 				}
