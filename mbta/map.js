@@ -110,15 +110,16 @@ var map_canvas;
 					for (j = 0; j < info.data.length; j++) {
 						if (info.data[j].attributes.arrival_time != null) {
 							// justify content left, justify direction right
+							time_stamp = findTime(info.data[j].attributes.arrival_time);
 							content = "<h4>" + content + "</h4><p><h5>" + info.data[j].attributes.arrival_time + "</h5></p>";
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								//Southbound (to Ashmont/Braintree)
+								content = content + "<h6>Southbound (Ashmont/Braintree)</h6>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								//Northbound to Alewife.
+								content = content + "<h6>Northbound (Alewife)</h6>";
 							}
 							else {
 								// ERROR
@@ -157,4 +158,8 @@ var map_canvas;
 				}
 			}
 			request.send(null);
+      }
+
+      function findTime (arrival_time) {
+
       }
