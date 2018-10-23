@@ -110,7 +110,6 @@ var map_canvas;
 					left_title = "<p class=left_title> Arrival Time </p>";
 					right_title = "<p class=right_title> Direction </p>";
 					content = content + left_title + right_title;
-					console.log(content);
 
 					for (j = 0; j < info.data.length; j++) {
 						if (info.data[j].attributes.arrival_time != null) {
@@ -169,7 +168,7 @@ var map_canvas;
 
       function findTime (arrival_time) {
       	var index = arrival_time.indexOf("T");
-      	var time_stamp = arrival_time.substr(index+1,index+2);
+      	var time_stamp = arrival_time.substr(index+1,index+1);
       	return time_stamp;
 
       }
