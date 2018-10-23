@@ -109,7 +109,7 @@ var map_canvas;
 					content = "<p class=station_name>" + stops[stop_index].stop_name + "</p>";
 					left_title = "<p class=left_title> Arrival Time </p>";
 					right_title = "<p class=right_title> Direction </p>";
-					content = content + left_title;
+					content = content + left_title + right_title;
 					console.log(content);
 
 					for (j = 0; j < info.data.length; j++) {

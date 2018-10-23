@@ -22,7 +22,7 @@ body {
 }
 
 .left_title {
-	font-size: 14px;
+	font-size: 12px;
 	display: inline-block;
   	float: left;
   	width: 50%;
@@ -30,7 +30,7 @@ body {
 }
 
 .right_title {
-	font-size: 14px;
+	font-size: 12px;
 	display: inline-block;
   	float: right;
   	width: 50%;
@@ -39,7 +39,7 @@ body {
 
 .station_name {
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .arrival_time {
