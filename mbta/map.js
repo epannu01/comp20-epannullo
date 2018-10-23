@@ -15,6 +15,10 @@ var map_canvas;
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
+		var icon = document.getElementById('icon.PNG');
+		theImg.height = 64;
+		theImg.width = 64;
+
 		//polyline
 
 		var stops = [
@@ -51,7 +55,7 @@ var map_canvas;
         	getMyLocation();
 	        markers = [];
 	        for (i = 0; i < stops.length;i++) {
-	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name, icon: "icon.PNG"}), 
+	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name, icon: icon}), 
 	          				stop_id : stops[i].stop_id};
 	          current_stop_id = stops[i].stop_id;
 	          current_title = markers[i].marker.title;
