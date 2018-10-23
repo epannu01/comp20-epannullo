@@ -53,7 +53,7 @@ var map_canvas;
 	        for (i = 0; i < stops.length;i++) {
 	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}, icon: icon.PNG), 
 	          				stop_id : stops[i].stop_id};
-	          google.maps.event.addListener(markers[i].marker, 'click', (function(markers[i] {
+	          google.maps.event.addListener(markers[i].marker, 'click', (function(markers[i]) {
 	          	return function() {
 		          	infowindow.setContent(markers[i].marker.title);
 					infowindow.open(map, markers[i].marker);
