@@ -10,7 +10,7 @@ var map_canvas;
         var current_position = new google.maps.LatLng(myLat, myLng);
 
         var myOptions = {
-			zoom: 14, // The larger the zoom number, the bigger the zoom
+			zoom: 13, // The larger the zoom number, the bigger the zoom
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -104,11 +104,12 @@ var map_canvas;
 			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
 			request.onreadystatechange = function() {
 				if (request.readyState == 4 && request.status == 200) {
-					data = request.responseText;
-					var info = JSON.parse(data);
+					theData = request.responseText;
+					var info = JSON.parse(theData);
 					content = "<p class=station_name>" + stops[stop_index].stop_name + "</p>";
 					left_title = "<p class=title> Arrival Time </p>";
 					content = content + left_title;
+					console.log(content);
 
 					for (j = 0; j < info.data.length; j++) {
 						if (info.data[j].attributes.arrival_time != null) {
