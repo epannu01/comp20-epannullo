@@ -10,7 +10,7 @@ var map_canvas;
         var current_position = new google.maps.LatLng(myLat, myLng);
 
         var myOptions = {
-			zoom: 20, // The larger the zoom number, the bigger the zoom
+			zoom: 14, // The larger the zoom number, the bigger the zoom
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -106,39 +106,44 @@ var map_canvas;
 				if (request.readyState == 4 && request.status == 200) {
 					data = request.responseText;
 					var info = JSON.parse(data);
-					content = stops[stop_index].stop_name;
+					content = "<p class=station_name>" + stops[stop_index].stop_name + "</p>";
+					left_title = "<p class=title> Arrival Time </p>";
+					content = content + left_title;
+
 					for (j = 0; j < info.data.length; j++) {
 						if (info.data[j].attributes.arrival_time != null) {
-							// justify content left, justify direction right
 							time_stamp = findTime(info.data[j].attributes.arrival_time);
-							content = "<h3>" + content + "</h3><p><h4>" + info.data[j].attributes.arrival_time + "</h4></p>";
+							arrival_time = "</p><p class=arrival_time>" + info.data[j].attributes.arrival_time + "</p>";
+							content = content + arrival_time;
+							
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								content = content + "<h5> Southbound (Ashmont/Braintree) </h5>";
+								content = content + "<p class=direction> Southbound (Ashmont/Braintree) </p>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								content = content + "<h5> Northbound (Alewife) </h5>";
+								content = content + "<p class=direction> Northbound (Alewife) </p>";
 							}
 							else {
-								content = "<h5> Not available </h5>";
+								content = "<p class=direction> Not available </p>";
 							}
 						}
 						else if (info.data[j].attributes.departure_time != null) {
-							// justify content left, justify direction right
-							content = "<h3>" + content + "</h3><p><h4>" + info.data[j].attributes.arrival_time + "</h4></p>";
+							time_stamp = findTime(info.data[j].attributes.arrival_time);
+							departure_time = "</p><p class=arrival_time>" + info.data[j].attributes.departure_time + "</p>";
+							content = content + departure_time;
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								content = content + "<h5> Southbound (Ashmont/Braintree) </h5>";
+								content = content + "<p class=direction> Southbound (Ashmont/Braintree) </p>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								content = content + "<h5> Northbound (Alewife) </h5>";
+								content = content + "<p class=direction> Northbound (Alewife) </p>";
 							}
 							else {
-								content = "<h5> Not available </h5>";
+								content = "<p class=direction> Not available </p>";
 							}
 						}
 						else {
