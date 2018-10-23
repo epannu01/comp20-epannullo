@@ -125,7 +125,23 @@ var map_canvas;
 							}
 						}
 						else if (info.data[j].attributes.departure_time != null) {
+							// justify content left, justify direction right
+							content = "<h4>" + content + "</h4><p><h5>" + info.data[j].attributes.arrival_time + "</h5></p>";
+							if (info.data[j].attributes.direction_id == 0)
+							{
+								//Southbound (to Ashmont/Braintree)
 
+							}
+							else if (info.data[j].attributes.direction_id == 1)
+							{
+								//Northbound to Alewife.
+							}
+							else {
+								// ERROR
+							}
+						}
+						else {
+							//Not available
 						}
 					}
 					
