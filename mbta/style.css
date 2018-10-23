@@ -21,16 +21,20 @@ body {
 	color: magenta;
 }
 
-h4 {
+h3 {
 	font-weight: bold;
 }
 
-h5 {
-	float: left;
+h4 {
+	display: inline-block;
+  	float: left;
+  	width: 50%;
 	font-weight: normal;
 }
 
-h6 {
-	float: right;
+h5 {
+	display: inline-block;
+  	float: right;
+  	width: 50%;
 	font-weight: normal;
 }

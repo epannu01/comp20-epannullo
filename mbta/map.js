@@ -111,15 +111,15 @@ var map_canvas;
 						if (info.data[j].attributes.arrival_time != null) {
 							// justify content left, justify direction right
 							time_stamp = findTime(info.data[j].attributes.arrival_time);
-							content = "<h4>" + content + "</h4><p><h5>" + info.data[j].attributes.arrival_time + "</h5></p>";
+							content = "<h3>" + content + "</h3><p><h4>" + info.data[j].attributes.arrival_time + "</h4></p>";
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								content = content + "<h6>Southbound (Ashmont/Braintree)</h6>";
+								content = content + "<h5>Southbound (Ashmont/Braintree)</h5>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								content = content + "<h6>Northbound (Alewife)</h6>";
+								content = content + "<h5>Northbound (Alewife)</h5>";
 							}
 							else {
 								// ERROR
@@ -127,15 +127,15 @@ var map_canvas;
 						}
 						else if (info.data[j].attributes.departure_time != null) {
 							// justify content left, justify direction right
-							content = "<h4>" + content + "</h4><p><h5>" + info.data[j].attributes.arrival_time + "</h5></p>";
+							content = "<h3>" + content + "</h3><p><h4>" + info.data[j].attributes.arrival_time + "</h4></p>";
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								//Southbound (to Ashmont/Braintree)
+								content = content + "<h5>Southbound (Ashmont/Braintree)</h5>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								//Northbound to Alewife.
+								content = content + "<h5>Northbound (Alewife)</h5>";
 							}
 							else {
 								// ERROR
