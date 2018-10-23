@@ -10,7 +10,7 @@ var map_canvas;
         var current_position = new google.maps.LatLng(myLat, myLng);
 
         var myOptions = {
-			zoom: 13, // The larger the zoom number, the bigger the zoom
+			zoom: 20, // The larger the zoom number, the bigger the zoom
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -114,15 +114,15 @@ var map_canvas;
 							content = "<h3>" + content + "</h3><p><h4>" + info.data[j].attributes.arrival_time + "</h4></p>";
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								content = content + "<h5>Southbound (Ashmont/Braintree)</h5>";
+								content = content + "<h5> Southbound (Ashmont/Braintree) </h5>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								content = content + "<h5>Northbound (Alewife)</h5>";
+								content = content + "<h5> Northbound (Alewife) </h5>";
 							}
 							else {
-								// ERROR
+								content = "<h5> Not available </h5>";
 							}
 						}
 						else if (info.data[j].attributes.departure_time != null) {
@@ -130,19 +130,19 @@ var map_canvas;
 							content = "<h3>" + content + "</h3><p><h4>" + info.data[j].attributes.arrival_time + "</h4></p>";
 							if (info.data[j].attributes.direction_id == 0)
 							{
-								content = content + "<h5>Southbound (Ashmont/Braintree)</h5>";
+								content = content + "<h5> Southbound (Ashmont/Braintree) </h5>";
 
 							}
 							else if (info.data[j].attributes.direction_id == 1)
 							{
-								content = content + "<h5>Northbound (Alewife)</h5>";
+								content = content + "<h5> Northbound (Alewife) </h5>";
 							}
 							else {
-								// ERROR
+								content = "<h5> Not available </h5>";
 							}
 						}
 						else {
-							//Not available
+							content = "<h4> Not available </h4>";
 						}
 					}
 					
