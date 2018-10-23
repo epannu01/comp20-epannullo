@@ -115,8 +115,7 @@ var map_canvas;
 					for (j = 0; j < info.data.length; j++) {
 						if (info.data[j].attributes.arrival_time != null) {
 							time_stamp = findTime(info.data[j].attributes.arrival_time);
-							console.log(time_stamp);
-							arrival_time = "</p><p class=arrival_time>" + info.data[j].attributes.arrival_time + "</p>";
+							arrival_time = "</p><p class=arrival_time>" + time_stamp + "</p>";
 							content = content + arrival_time;
 							
 							if (info.data[j].attributes.direction_id == 0)
@@ -134,7 +133,7 @@ var map_canvas;
 						}
 						else if (info.data[j].attributes.departure_time != null) {
 							time_stamp = findTime(info.data[j].attributes.departure_time);
-							departure_time = "</p><p class=arrival_time>" + info.data[j].attributes.departure_time + "</p>";
+							departure_time = "</p><p class=arrival_time>" + time_stamp + "</p>";
 							content = content + departure_time;
 							if (info.data[j].attributes.direction_id == 0)
 							{
