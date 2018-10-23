@@ -14,6 +14,7 @@ var map_canvas;
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
+
 		//polyline
 
 		var stops = [
@@ -46,24 +47,19 @@ var map_canvas;
         // markers and calls functiton to add the schedule information
         function init()
         {
-
-        	console.log("inside init");
         	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         	getMyLocation();
 	        markers = [];
 	        for (i = 0; i < stops.length;i++) {
-	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}), 
+	          markers[i] = {marker: new google.maps.Marker({position: stops[i].position, title: stops[i].stop_name}, icon: icon.PNG), 
 	          				stop_id : stops[i].stop_id};
-	          current_stop_id = stops[i].stop_id;
-	          current_title = markers[i].marker.title;
-	          current_marker = markers[i].marker;
-	          google.maps.event.addListener(markers[i].marker, 'click', (function(i, current_stop_id, current_marker, current_title) {
+	          google.maps.event.addListener(markers[i].marker, 'click', (function(markers[i] {
 	          	return function() {
-		          	infowindow.setContent(current_title);
-					infowindow.open(map, current_marker);
-		            getSchedule(i, current_stop_id);
+		          	infowindow.setContent(markers[i].marker.title);
+					infowindow.open(map, markers[i].marker);
+		            getSchedule(i, markers[i].stop_id);
 	          	}
-	          })(i, current_stop_id, current_marker, current_title));
+	          })(markers[i]);
 	          markers[i].marker.setMap(map);
 	    	}
 
@@ -104,16 +100,29 @@ var map_canvas;
 	    	var request = new XMLHttpRequest();
 			request.open("GET", "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=" + stop_id, true);
 			request.onreadystatechange = function() {
-				console.log("inside function to parse");
 				if (request.readyState == 4 && request.status == 200) {
-					console.log("Got the data back!");
 					data = request.responseText;
 					var info = JSON.parse(data);
 					content = stops[stop_index].stop_name;
 					for (j = 0; j < info.data.length; j++) {
-						console.log(info.data[j].attributes.arrival_time);
 						if (info.data[j].attributes.arrival_time != null) {
+							// justify content left, justify direction right
 							content = content + "\n" + info.data[j].attributes.arrival_time;
+							if (info.data[j].attributes.direction_id == 0)
+							{
+								//Southbound (to Ashmont/Braintree)
+
+							}
+							else if (info.data[j].attributes.direction_id == 1)
+							{
+								//Northbound to Alewife.
+							}
+							else {
+								// ERROR
+							}
+						}
+						else if (info.data[j].attributes.departure_time != null) {
+
 						}
 					}
 					
