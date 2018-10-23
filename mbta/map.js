@@ -16,8 +16,8 @@ var map_canvas;
 		};
 
 		var icon = document.getElementById('icon.PNG');
-		theImg.height = 64;
-		theImg.width = 64;
+		icon.height = 64;
+		icon.width = 64;
 
 		//polyline
 
