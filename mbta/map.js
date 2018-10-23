@@ -107,7 +107,8 @@ var map_canvas;
 					theData = request.responseText;
 					var info = JSON.parse(theData);
 					content = "<p class=station_name>" + stops[stop_index].stop_name + "</p>";
-					left_title = "<p class=title> Arrival Time </p>";
+					left_title = "<p class=left_title> Arrival Time </p>";
+					right_title = "<p class=right_title> Direction </p>";
 					content = content + left_title;
 					console.log(content);
 
