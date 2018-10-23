@@ -26,11 +26,11 @@ h4 {
 }
 
 h5 {
-	text-align: left;
+	float: left;
 	font-weight: normal;
 }
 
 h6 {
-	text-align: right;
+	float: right;
 	font-weight: normal;
 }
