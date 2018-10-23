@@ -168,7 +168,7 @@ var map_canvas;
 
       function findTime (arrival_time) {
       	var index = arrival_time.indexOf("T");
-      	var time_stamp = arrival_time.substr(index+1,index+4);
+      	var time_stamp = arrival_time.substr(index+1);
       	return time_stamp;
 
       }
