@@ -7,12 +7,12 @@ var map_canvas;
 		var map;
 	
         // Start at South Station
-        var myLat = 42.352271;
-        var myLng = -71.05524200000001;
-        var current_position = new google.maps.LatLng(myLat, myLng);
+        myLat = 42.352271;
+        myLng = -71.05524200000001;
+        current_position = new google.maps.LatLng(myLat, myLng);
 
         var myOptions = {
-			zoom: 13, // The larger the zoom number, the bigger the zoom
+			zoom: 13,
 			center: current_position,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -22,8 +22,6 @@ var map_canvas;
 
 		var forkCoords = [];
 		var forkCoords_size = 0;
-
-		//polyline
 
 		var stops = [
 			{position : new google.maps.LatLng(42.395428, -71.142483), stop_id : "place-alfcl", stop_name : "Alewife"},
@@ -65,8 +63,6 @@ var map_canvas;
 	          current_marker = markers[i].marker;
 	          google.maps.event.addListener(markers[i].marker, 'click', (function(i, current_stop_id, current_marker, current_title) {
 	          	return function() {
-		          	infowindow.setContent(current_title);
-					infowindow.open(map, current_marker);
 		            getSchedule(i, current_stop_id);
 	          	}
 	          })(i, current_stop_id, current_marker, current_title));
@@ -93,9 +89,14 @@ var map_canvas;
 
 				map.panTo(me);
 
+				closest_stop_index = closestStop(markers)
+
 				marker = new google.maps.Marker({
 					position: me,
-					title: "Here I Am!"
+					title: "<p class=station_name> You are here </p> <p> Closest T-stop is " 
+							+ markers[closest_stop_index].marker.title + " which is " +
+							(google.maps.geometry.spherical.computeDistanceBetween(me,markers[closest_stop_index].marker.position)*0.000621371192).toFixed(2)+
+							" miles away. </p>"
 				});
 				marker.setMap(map);
 					
@@ -103,6 +104,8 @@ var map_canvas;
 					infowindow.setContent(marker.title);
 					infowindow.open(map, marker);
 				});
+
+				makeShortestPath(closest_stop_index, me);
 
 			}
 
@@ -168,7 +171,7 @@ var map_canvas;
 					document.getElementById("location").innerHTML = "<p>Something went wrong</p>";
 				}
 				else {
-					console.log("In progress...");
+					
 				}
 			}
 			request.send(null);
@@ -179,7 +182,6 @@ var map_canvas;
       	end = arrival_time.lastIndexOf("-");
       	time_stamp = arrival_time.substring(begin+1, end);
       	return time_stamp;
-
       }
 
       function makePath (markers) {
@@ -229,4 +231,34 @@ var map_canvas;
         	});
 
         	fork.setMap(map);
+      }
+
+      function makeShortestPath (closest_stop_index) {
+      	start_lat = myLat;
+        start_lng = myLng;
+        end_lat = markers[closest_stop_index].marker.getPosition().lat();
+        end_lng = markers[closest_stop_index].marker.getPosition().lng();
+        shortestPathCoords = [{lat: start_lat, lng: start_lng}, {lat: end_lat, lng: end_lng}];
+
+		var path = new google.maps.Polyline({
+          	path: shortestPathCoords,
+          	geodesic: true,
+          	strokeColor: '#008B00',
+          	strokeOpacity: 1.0,
+          	strokeWeight: 2
+        });
+
+        path.setMap(map);
+
+      }
+ 
+      function closestStop (markers) {
+      	closest_stop_index = 0;
+      	for (i = 1; i < markers.length; i++) {
+      		if (google.maps.geometry.spherical.computeDistanceBetween(me,markers[i].marker.position) < 
+      			google.maps.geometry.spherical.computeDistanceBetween(me,markers[closest_stop_index].marker.position)) {
+      			closest_stop_index = i;
+      		}
+      	}
+      	return closest_stop_index;
       }
