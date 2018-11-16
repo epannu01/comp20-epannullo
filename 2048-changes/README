@@ -1,0 +1,2 @@
+The only file I changed from the 2048 game is the game_manager.js. I changed the file to make a request to my server and send over 
+data so that the information about score and grid could be stored in the database.
