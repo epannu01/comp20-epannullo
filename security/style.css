@@ -1,0 +1,29 @@
+body {
+	margin-left: 40px;
+	background-color: #cec1c9;
+	color: #745563;
+}
+
+h1 {
+	color: #402531;
+}
+
+h3 {
+	margin-left: 60px;
+	font-weight: bold;
+	color: #6d184c;
+}
+
+ol {
+	margin-left: 80px;
+}
+
+p {
+	margin-left: 90px;
+}
+
+img {
+	margin-top: 10px;
+	width: 700px;
+}
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title> Assignment 4 </title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body>
+	<h1> Assignment 4: Security </h1>
+	<h3> Introduction </h3>
+		<p> For this assignment, the task was to find vulnerabilities in someone else's code from assignment 3. We learned in class about some common securitiy risks that many of us did not know about or account for when making our assignment 3. In this assignment, we use our new knowledge of security risks to poke around someone else's code and find three different vulnerabilities. </p>
+	<h3> Methodology </h3>
+		<p> I mainly used curl for this assignment as well as a shell script to generate infinite instances of using curl. I wanted to start with looking at my partners code to see if I immediatly saw any issues or anything they did well that would make it difficult for me. I saw that Ming's (my partner) wrote his server code such that I would have to enter in all of the data (username, grid, and score) and that these had validators on them to ensure the information was entered in the correct form. However, since username is just a string I knew I could do both cross site scripting and injection of code because there was no limit on the length of the username. Additionally, I thought I would be able to spam the database with post requests since the database can only hold so much data. Curl could be used for the cross site scripting as well as the injection- and a shell script that used an infinite while loop would be used to fill up the database. Using these strategies and methods, I was able to find three different vulnerabilities. 
+	<h3> Abstract Findings </h3>
+		<p> To restate above, I found three different vulnerabilities. First, I was able to change the background of web page by inserting style code into a request to Ming's server. Next, I was able to create a request to Ming's server but ass Javascript code that created a pop-up window when there should not be a pop-up window. Lastly, by running a piece of code over and over again, I was able to overload Ming's database. </p>
+	<h3> Issues Found </h3>
+		<ol>
+			<li>
+				<h4> Injecting style code </h4>
+				<div> Below is the line I ran in my terminal making a request to Ming's server but instead of putting in a proper username, I added style code and picked a silly cat picture from the internet and made it the background of the home page where all of the score data is displayed. </div>
+				<div> Severity: I would say this is medium severity. The page looks silly now, but all of the other informaiton on the page is still there- you can still read the score data. </div>
+				<div> This problem could be prevented by doing something like this : //foodItem = foodItem.replace(/[^\w\s]/gi, ''); // . This line is from Ming's nodemongopp server.js example on github. This was shown in class to prevent someone from entering tags of any sort. </div>
+				<div> <img src="style_injection_curl.png"> </div>
+				<div> <img src="style_injection_pic.png"> </div>
+			</li>
+			<li>
+				<h4> Cross Site Scripting (XSS) </h4>
+				<div> The images below show the terminal line I used to do cross site scripting and the result on the gamer server home page. I ran curl but this time instead of using a style tag, I used a script tag to get a pop-up window to display with the message "mwahaha". </div>
+				<div> Severity: I would say this is high severity. Scripting can be very malicious- this can be used to redirect to other sites, steal information and personal data, and a lot of other dangerous things. </div>
+				<div> Referencing the fix explained above, that will also work to prevent cross site scripting. </div>
+				<div> <img src="xss_curl.png"> </div>
+				<div> <img src="xss_pic.png"> </div>
+			</li>
+			<li>
+				<h4> Shell Scripting to Fill Database </h4>
+				<div> The images below show the terminal line I used a shell script and a do while loop to continuously do a curl until the database is full. </div>
+				<div> Severity: I would say this is high severity. Filling the database could either crash the database if it cannot handle all of these requests coming in one after another, or will fill the database to the point where others cannot use and access it. </div>
+				<div> One possible way to prevent this would be to check to see if the database is continually getting the exact same entry, but that could mean doing a lot of extra checks. </div>
+				<div> <img src="fill_db_shellscript.png"> </div>
+				<div> <img src="fill_db_pic.png"> </div>
+			</li>
+		</ol>
+	<h3> Conclusion </h3>
+		<p> After completing this assignemt, I now realize that a lot of the code I wrote for assignment 3 was riddled with vulnerabilities. I now see why security is so important since there are many ways to compromise the security of a website. This is especially important today since many transactions are done online and a lot of personal data is being stored. </p>
+
+	<h3> References </h3>
+		<p> I used Ming's nodemongoapp example from the Comp20 github to understand about how to prevent cross scripting and injection. I also used this link: https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/shell_scripts/shell_scripts.html to jog my memory on how to do shell scripting on a Mac in the terminal. </p>
+
+</body>
+</html>
