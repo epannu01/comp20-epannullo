@@ -3,7 +3,7 @@
 <head>
 
 	<title> Assignment 4 </title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" href="style.css" />
 
 </head>
 
@@ -22,24 +22,24 @@
 				<div> Below is the line I ran in my terminal making a request to Ming's server but instead of putting in a proper username, I added style code and picked a silly cat picture from the internet and made it the background of the home page where all of the score data is displayed. </div>
 				<div> Severity: I would say this is medium severity. The page looks silly now, but all of the other informaiton on the page is still there- you can still read the score data. </div>
 				<div> This problem could be prevented by doing something like this : //foodItem = foodItem.replace(/[^\w\s]/gi, ''); // . This line is from Ming's nodemongopp server.js example on github. This was shown in class to prevent someone from entering tags of any sort. </div>
-				<div> <img src="style_injection_curl.png"> </div>
-				<div> <img src="style_injection_pic.png"> </div>
+				<div> <img src="style_injection_curl.png" alt="Curl line for style injection"> </div>
+				<div> <img src="style_injection_pic.png" alt="Picture of new background"> </div>
 			</li>
 			<li>
 				<h4> Cross Site Scripting (XSS) </h4>
 				<div> The images below show the terminal line I used to do cross site scripting and the result on the gamer server home page. I ran curl but this time instead of using a style tag, I used a script tag to get a pop-up window to display with the message "mwahaha". </div>
 				<div> Severity: I would say this is high severity. Scripting can be very malicious- this can be used to redirect to other sites, steal information and personal data, and a lot of other dangerous things. </div>
 				<div> Referencing the fix explained above, that will also work to prevent cross site scripting. </div>
-				<div> <img src="xss_curl.png"> </div>
-				<div> <img src="xss_pic.png"> </div>
+				<div> <img src="xss_curl.png" alt="Curl line for style injection"> </div>
+				<div> <img src="xss_pic.png" alt="Picture to show pop-up window"> </div>
 			</li>
 			<li>
 				<h4> Shell Scripting to Fill Database </h4>
 				<div> The images below show the terminal line I used a shell script and a do while loop to continuously do a curl until the database is full. </div>
 				<div> Severity: I would say this is high severity. Filling the database could either crash the database if it cannot handle all of these requests coming in one after another, or will fill the database to the point where others cannot use and access it. </div>
 				<div> One possible way to prevent this would be to check to see if the database is continually getting the exact same entry, but that could mean doing a lot of extra checks. </div>
-				<div> <img src="fill_db_shellscript.png"> </div>
-				<div> <img src="fill_db_pic.png"> </div>
+				<div> <img src="fill_db_shellscript.png" alt="Shell script"> </div>
+				<div> <img src="fill_db_pic.png" alt="Image showing all of the entires in database"> </div>
 			</li>
 		</ol>
 	<h3> Conclusion </h3>
