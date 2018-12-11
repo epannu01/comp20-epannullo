@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="utf-8" />
+    <title>	TimeSaver</title>
+    
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+    
+    <script>
+        $(document).ready(function(){
+            $("#msg").keypress(function(e){
+                if(e.which == 13) {
+                    search_video();
+                }
+            });
+        });
+
+        function search_video() {
+            input = document.getElementById("msg").value;
+                var requestA = new XMLHttpRequest();
+                url = 'https://time-saver18.herokuapp.com/submit';
+                requestA.open("POST", url, true);
+                requestA.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                requestA.onreadystatechange = function() {
+
+                if (requestA.status == 200 && requestA.readyState == 4) {
+                
+            }
+        }
+            keyWordsearch(input);
+             
+    }
+
+
+        function keyWordsearch(input) {
+            gapi.client.setApiKey("AIzaSyDSzkHjGqoXbtWfeCulNMi_KU0Fn2OGC-A");
+            gapi.client.load('youtube', 'v3', function() {
+                var query = input;
+                var request = gapi.client.youtube.search.list({
+                    q: query,
+                    part: 'snippet',
+                    maxResults: 12
+                });
+                request.execute(function(response)  {
+                    $('#video_search').html("");
+                    var results = response.result.items;
+                $.each(results, function(index, item) {
+                    title = item.snippet.title;
+                    videoId = item.id.videoId;
+                    $('#video_search').append('<iframe width="300" height="300" src="https://www.youtube.com/embed/' + videoId + "?autoplay=1" +'" target="_blank">' + title + ' align="middle" </iframe>');
+                });
+
+            });
+            });
+        };
+
+    </script>
+</head>
+
+
+
+<body>
+
+    <div class="glitch" data-text="TimeSaver">
+    <span class="glitch__main">TimeSaver</span>
+    </div>
+
+
+    <h1> The YouTube interface has become too cluttered and makes finding the best video a time consuming process. This website was developed in order to help the user "save time" by autoplaying many videos simultaneously so that the user can evaluate many options at once instead clicking through one video at a time. </h1>
+
+    <h3>Please enter your search in the box below:</h3>
+
+    <input align = "center" placeholder= "Search..." type="text" id="msg" name="msg" size="30">
+
+    <div id="video_search"></div>
+
+    <div class="recommendations"><br><i>Curious how many times this website has been used?</i><br><button><a href="https://time-saver18.herokuapp.com/">Click here </a>></button></div>
+
+    <h2> This website was developed by Colby Azersky, Meg Farley, and Emma Pannullo in fall of 2018 for a web programming course instructed by Ming Chow at Tufts University.</h2>
+
+
+</body>
+</html>
